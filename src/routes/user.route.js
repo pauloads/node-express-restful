@@ -1,10 +1,12 @@
 import express from "express"
-import {listAll} from "../controllers/user.controller.js"
+import {create, findById, listAll, remove, update} from "../controllers/user.controller.js"
 
-export default (app) => {
-    const router = express.Router()
+const router = express.Router()
 
-    router.get('/', listAll)
+router.get('/', listAll)
+router.post('/', create)
+router.get('/:id', findById)
+router.put('/:id', update)
+router.delete('/:id', remove)
 
-    app.use("/api/users", router)
-}
+export default router
